@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PrintDemoController;
+use App\Http\Controllers\TemplateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('testprint');
 });
+
+Route::get('/print-demo', [PrintDemoController::class, 'index'])->name('print.demo');
+Route::post('/print-demo', [PrintDemoController::class, 'print'])->name('print.demo.print');
+
+Route::post('/print-browser', [PrintDemoController::class, 'printBrowser'])
+    ->name('print.browser');
+
+Route::post('/print-csv', [PrintDemoController::class, 'print'])->name('print.csv');
+
+Route::get('/templates/{name}', [TemplateController::class, 'open'])
+    ->name('templates.open');
