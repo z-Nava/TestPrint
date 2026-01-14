@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrintDemoController;
 use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\JobValidationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,9 @@ Route::get('/', function () {
 
 Route::get('/print-demo', [PrintDemoController::class, 'index'])->name('print.demo');
 Route::post('/print-demo', [PrintDemoController::class, 'print'])->name('print.demo.print');
+
+Route::get('/job-validation', [JobValidationController::class, 'index'])->name('job.validation');
+Route::post('/job-validation/reload', [JobValidationController::class, 'reload'])->name('job.validation.reload');
 
 Route::post('/print-browser', [PrintDemoController::class, 'printBrowser'])
     ->name('print.browser');

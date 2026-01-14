@@ -17,6 +17,12 @@
             <p class="text-slate-600 mt-1">
                 Pruebas: abrir template (.btw), imprimir desde navegador y generar CSV para BarTender.
             </p>
+
+            <a href="{{ route('job.validation') }}"
+                class="block text-center w-full rounded-xl bg-blue-600 text-white py-3 font-semibold hover:bg-blue-500 transition">
+                    Ver Jobs (Excel - Carpeta compartida)
+                </a>
+
         </div>
 
         <!-- A) Abrir Template -->
