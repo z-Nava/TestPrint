@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PT - Ensamble y Empaque (Preview)</title>
+
+  <style>
+    /* En browser se verá bien; para dompdf también es más estable que Tailwind */
+    body { margin: 0; padding: 16px; background:#e9eef5; font-family: Arial, Helvetica, sans-serif; }
+    .sheet {
+      width: 1100px; /* para preview */
+      margin: 0 auto;
+      background: #fff;
+      border: 2px solid #000;
+    }
+    table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+    td, th { border: 1px solid #000; padding: 6px 8px; vertical-align: middle; }
+    .center { text-align: center; }
+    .right { text-align: right; }
+    .bold { font-weight: 700; }
+    .muted { color: #111; }
+    .h-34 { height: 34px; }
+    .h-40 { height: 40px; }
+    .h-46 { height: 46px; }
+    .h-60 { height: 60px; }
+    .h-90 { height: 90px; }
+    .h-120 { height: 120px; }
+
+    .bg-gray { background: #d9d9d9; }
+    .bg-cream { background: #fff2cc; }
+    .bg-pink  { background: #fbe5d6; }
+    .bg-yellow { background: #fff200; }
+
+    .title {
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+    .big {
+      font-size: 30px;
+      font-weight: 700;
+    }
+    .mid {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .small { font-size: 12px; }
+    .xs { font-size: 11px; }
+    .aster {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .aster-mid {
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: #c00000;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    /* Para que se parezca al “redondeado” del Excel del screenshot */
+    .rounded-wrap {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sheet rounded-wrap">
+    <table>
+      <!-- Row 1: Header -->
+      <tr class="h-46">
+        <td colspan="4" class="center">
+          <div class="logo">Milwaukee</div>
+        </td>
+        <td colspan="8" class="center bold title">PRODUCTO TERMINADO - ENSAMBLE Y EMPAQUE</td>
+        <td colspan="2" class="center bold">Destino</td>
+        <td colspan="2" class="center bg-yellow bold">OB EXCELLENCE</td>
+      </tr>
+
+      <!-- Row 2 -->
+      <tr class="h-40">
+        <td colspan="2" class="bg-gray bold center">Líder:</td>
+        <td colspan="2" class="bg-cream"></td>
+
+        <td class="bg-gray bold center">Turno:</td>
+        <td class="bg-cream"></td>
+
+        <td colspan="2" class="bg-gray bold center">Job Ensamble:</td>
+        <td colspan="3" class="bg-pink center bold">385434</td>
+
+        <td colspan="2" class="bg-gray bold center">Fecha:</td>
+        <td colspan="3" class="bg-cream"></td>
+      </tr>
+
+      <!-- Row 3 -->
+      <tr class="h-46">
+        <td colspan="2" class="bg-gray bold center">Línea:</td>
+        <td colspan="4" class="center bold">MXC031</td>
+
+        <td colspan="2" class="bg-gray bold center">Job Empaque:</td>
+        <td colspan="3" class="bg-pink center bold">380032</td>
+
+        <td colspan="2" class="bg-gray bold center">Custom PO</td>
+        <td colspan="3" class="center bold">380047559</td>
+      </tr>
+
+      <!-- Row 4 -->
+      <tr class="h-60">
+        <td colspan="2" class="bg-gray bold center">Modelo:</td>
+        <td colspan="4" class="center bold">3004-20</td>
+
+        <td colspan="2" class="bg-gray bold center">Folio:</td>
+        <td colspan="3" class="center bold">01</td>
+
+        <td colspan="2" class="bg-gray bold center"></td>
+        <td colspan="3" class="center aster-mid">*380047559*</td>
+      </tr>
+
+      <!-- Divider -->
+      <tr>
+        <td colspan="16" style="padding:0;border-left:0;border-right:0;">
+          <div style="height:1px;background:#000;"></div>
+        </td>
+      </tr>
+
+      <!-- NP Ensamble / Lote Ensamble block -->
+      <tr class="h-90">
+        <td colspan="2" class="bg-gray bold center">Np Ensamble:</td>
+        <td colspan="9" class="center">
+          <div class="mid">103881001</div>
+          <div class="xs">MXF STATIONARY THREADER TOP LEVEL ASSY FOR UL</div>
+          <div class="aster">*103881001*</div>
+        </td>
+
+        <td colspan="2" class="bg-gray bold center">Lote<br>Ensamble:</td>
+        <td colspan="3" class="center">
+          <div class="small">385434-01</div>
+          <div class="aster-mid">*385434-01*</div>
+        </td>
+      </tr>
+
+      <!-- NP Empaque / Lote Empaque block -->
+      <tr class="h-90">
+        <td colspan="2" class="bg-gray bold center">Np Empaque:</td>
+        <td colspan="9" class="center">
+          <div class="mid">018677013</div>
+          <div class="xs">M18 FUEL HATCHET 8" PRUNING SAW/18V-DC UL VERSION METCO 3004-20/75622 / MADE IN MEXICO</div>
+          <div class="aster">*018677013*</div>
+        </td>
+
+        <td colspan="2" class="bg-gray bold center">Lote<br>Empaque:</td>
+        <td colspan="3" class="center">
+          <div class="small">380032-01</div>
+          <div class="aster-mid">*380032-01*</div>
+        </td>
+      </tr>
+
+      <!-- Divider -->
+      <tr>
+        <td colspan="16" style="padding:0;border-left:0;border-right:0;">
+          <div style="height:1px;background:#000;"></div>
+        </td>
+      </tr>
+
+      <!-- Subinventory / Local / Qty / Observaciones -->
+      <tr class="h-40">
+        <td colspan="4" class="bg-gray bold center">Subinventory:</td>
+        <td colspan="4" class="bg-gray bold center">Local:</td>
+        <td colspan="4" class="bg-gray bold center">Cantidad en pallet:</td>
+        <td colspan="4" class="bg-gray bold center">Observaciones:</td>
+      </tr>
+
+      <tr class="h-90">
+        <td colspan="4" class="center">
+          <div class="small">WIP</div>
+          <div class="aster-mid">*WIP*</div>
+        </td>
+        <td colspan="4" class="center">
+          <div class="small">MXC031</div>
+          <div class="aster-mid">*MXC031*</div>
+        </td>
+        <td colspan="4" class="center">
+          <div class="small">360</div>
+          <div class="aster-mid">*360*</div>
+        </td>
+        <td colspan="4"></td>
+      </tr>
+
+      <!-- Divider -->
+      <tr>
+        <td colspan="16" style="padding:0;border-left:0;border-right:0;">
+          <div style="height:1px;background:#000;"></div>
+        </td>
+      </tr>
+
+      <!-- Bottom signoff blocks -->
+      <tr class="h-120">
+        <td colspan="4" class="center bold">LIBERACION IPQC</td>
+        <td colspan="4" class="center bold">LIBERACION OQC</td>
+        <td colspan="4" class="center bold">PRODUCTION SUPPORT</td>
+        <td colspan="4" class="center bold">ALMACÉN:</td>
+      </tr>
+
+      <tr class="h-120">
+        <td colspan="4"></td>
+        <td colspan="4"></td>
+        <td colspan="4"></td>
+        <td colspan="4"></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
