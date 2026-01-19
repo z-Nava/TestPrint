@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrintDemoController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\JobValidationController;
+use App\Http\Controllers\MasterEnsambleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,9 @@ Route::post('/print-csv', [PrintDemoController::class, 'print'])->name('print.cs
 
 Route::get('/templates/{name}', [TemplateController::class, 'open'])
     ->name('templates.open');
+
+Route::get('/master-ensamble', [MasterEnsambleController::class, 'index'])
+    ->name('master.ensamble');
+
+Route::post('/master-ensamble/pdf', [MasterEnsambleController::class, 'pdf'])
+    ->name('master.ensamble.pdf');

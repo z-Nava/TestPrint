@@ -23,6 +23,12 @@
                     Ver Jobs (Excel - Carpeta compartida)
                 </a>
 
+                <a href="{{ route('master.ensamble') }}"
+                    class="mt-3 block text-center w-full rounded-xl bg-purple-600 text-white py-3 font-semibold hover:bg-purple-500 transition">
+                    Master Ensamble (XLSX → PDF)
+                </a>
+
+
         </div>
 
         <!-- A) Abrir Template -->
