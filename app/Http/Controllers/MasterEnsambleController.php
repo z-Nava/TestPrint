@@ -13,7 +13,7 @@ class MasterEnsambleController extends Controller
     private string $templatePath = '';
 
     public function __construct()
-    {
+    {   //storage/app/tempalates/master_ensamble.xlsx
         $this->templatePath = storage_path('app/templates/master_ensamble.xlsx');
     }
 
