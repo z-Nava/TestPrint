@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Etiqueta Producto Terminado - Horizontal</title>
+
+  <style>
+    :root{
+      --b: 2px;
+      --font: Arial, Helvetica, sans-serif;
+    }
+
+    html, body { margin:0; padding:0; background:#d7d7d7; font-family: var(--font); }
+    .stage{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .paper{
+      background:#f3f3f3;
+      border: 10px solid #cfcfcf;
+      padding:18px;
+      border-radius:8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+
+    /* etiqueta horizontal */
+    .label{
+      width: 1500px;
+      height: 1000px;
+      background:#fff;
+      border: var(--b) solid #000;
+      box-sizing:border-box;
+      display:grid;
+      grid-template-rows: 70px 1fr 220px; /* header / contenido / footer */
+    }
+
+    /* HEADER */
+    .header{
+      border-bottom: var(--b) solid #000;
+      display:grid;
+      grid-template-columns: 170px 1fr 260px;
+      align-items:center;
+    }
+    .brand{
+      padding-left:14px;
+      font-weight:900;
+      font-style: italic;
+      font-size:20px;
+    }
+    .title{
+      text-align:center;
+      font-weight:900;
+      font-size:28px;
+      letter-spacing:1px;
+    }
+    .datetime{
+      border-left: var(--b) solid #000;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      font-size:20px;
+      letter-spacing:.5px;
+    }
+
+    /* MAIN (arriba: datos + liberaciones) */
+    .main{
+      display:grid;
+      grid-template-columns: 1fr 260px; /* datos / liberaciones */
+      height:100%;
+    }
+    .dataArea{
+      border-right: var(--b) solid #000;
+      display:grid;
+      grid-template-rows: 1fr;
+      padding: 12px 14px;
+      box-sizing:border-box;
+    }
+
+    /* 2 columnas de datos */
+    .cols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      height:100%;
+    }
+    .col{
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 190px 1fr;
+      align-items:center;
+      gap: 10px;
+    }
+    .k{
+      font-weight:900;
+      font-size:20px;
+      white-space:nowrap;
+    }
+    .v{
+      font-weight:700;
+      font-size:20px;
+    }
+
+    .bar{
+      height: 52px;
+      border: var(--b) solid #000;
+      background: repeating-linear-gradient(
+        90deg,
+        #000 0px, #000 2px,
+        transparent 2px, transparent 7px
+      );
+      margin-left: 200px; /* para que empiece debajo del valor como en la foto */
+    }
+    .bar.big{ height: 62px; }
+    .bar.small{ height: 40px; width: 220px; }
+
+    /* Sección liberaciones (derecha) */
+    .release{
+      display:grid;
+      grid-template-rows: 1fr 1fr;
+      height:100%;
+    }
+    .relBox{
+      border-bottom: var(--b) solid #000;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top: 22px;
+      font-weight:900;
+      font-size:22px;
+      letter-spacing:.5px;
+    }
+    .relBox:last-child{ border-bottom:0; }
+
+    /* FOOTER (abajo: subinventory / local / production support) */
+    .footer{
+      border-top: var(--b) solid #000;
+      display:grid;
+      grid-template-columns: 1fr 1fr 260px;
+      height:100%;
+    }
+
+    .footCell{
+      border-right: var(--b) solid #000;
+      display:grid;
+      grid-template-rows: 55px 1fr;
+    }
+    .footCell:last-child{ border-right:0; }
+
+    .footHead{
+      border-bottom: var(--b) solid #000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      font-size:22px;
+      letter-spacing:.5px;
+    }
+
+    .footBody{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 10px;
+      box-sizing:border-box;
+    }
+    .footVal{
+      font-size:22px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+    .footBar{
+      width: 75%;
+      height: 70px;
+      border: var(--b) solid #000;
+      background: repeating-linear-gradient(
+        90deg,
+        #000 0px, #000 2px,
+        transparent 2px, transparent 7px
+      );
+    }
+
+    .prodSupport{
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top: 20px;
+      font-weight:900;
+      font-size:22px;
+      letter-spacing:.5px;
+    }
+
+    .actions{
+      margin-top: 12px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+    }
+    .btn{
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid #111;
+      background:#fff;
+      cursor:pointer;
+      font-weight:800;
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .paper{ border:0; box-shadow:none; padding:0; }
+      .actions{ display:none; }
+      @page{ margin:0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stage">
+    <div>
+      <div class="paper">
+        <div class="label">
+
+          <!-- HEADER -->
+          <div class="header">
+            <div class="brand">Milwaukee</div>
+            <div class="title">PRODUCTO TERMINADO</div>
+            <div class="datetime">16/Jan/2026 11:16</div>
+          </div>
+
+          <!-- MAIN -->
+          <div class="main">
+            <!-- DATOS -->
+            <div class="dataArea">
+              <div class="cols">
+
+                <!-- IZQ -->
+                <div class="col">
+                  <div class="row"><div class="k">MODELO:</div><div class="v">3017-20</div></div>
+
+                  <div class="row"><div class="k">JOB EMPAQUE:</div><div class="v">385082</div></div>
+                  <div class="bar"></div>
+
+                  <div class="row"><div class="k">NP EMPAQUE:</div><div class="v">018223043</div></div>
+                  <div class="bar"></div>
+
+                  <div class="row"><div class="k">LOTE EMPAQUE:</div><div class="v">018223043-44</div></div>
+                  <div class="bar big"></div>
+
+                  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px; margin-top:auto;">
+                    <div>
+                      <div class="row" style="grid-template-columns: 120px 1fr;">
+                        <div class="k">FOLIO:</div><div class="v">44</div>
+                      </div>
+                      <div class="bar small" style="margin-left:0;"></div>
+                    </div>
+
+                    <div>
+                      <div class="row" style="grid-template-columns: 160px 1fr;">
+                        <div class="k">CUSTOM PO:</div><div class="v">380046933</div>
+                      </div>
+                      <div class="bar small" style="width:320px; margin-left:0;"></div>
+                    </div>
+
+                    <div>
+                      <div class="row" style="grid-template-columns: 150px 1fr;">
+                        <div class="k">DESTINO:</div><div class="v">&nbsp;</div>
+                      </div>
+                      <div class="bar small" style="width:120px; margin-left:0;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- DER -->
+                <div class="col">
+                  <div class="row"><div class="k">CANTIDAD:</div><div class="v">1332 (44/37.00)</div></div>
+
+                  <div class="row"><div class="k">JOB ENSAMBLE:</div><div class="v">385081</div></div>
+                  <div class="bar"></div>
+
+                  <div class="row"><div class="k">NP ENSAMBLE:</div><div class="v">103223024</div></div>
+                  <div class="bar"></div>
+
+                  <div class="row"><div class="k">LOTE ENSAMBLE:</div><div class="v">103223024-44</div></div>
+                  <div class="bar big"></div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- LIBERACIONES -->
+            <div class="release">
+              <div class="relBox">LIBERACIÓN IPQC</div>
+              <div class="relBox">LIBERACIÓN OQC</div>
+            </div>
+          </div>
+
+          <!-- FOOTER -->
+          <div class="footer">
+            <div class="footCell">
+              <div class="footHead">SUBINVENTORY:</div>
+              <div class="footBody">
+                <div class="footBar"></div>
+                <div class="footVal">WIP</div>
+              </div>
+            </div>
+
+            <div class="footCell">
+              <div class="footHead">LOCAL:</div>
+              <div class="footBody">
+                <div class="footBar"></div>
+                <div class="footVal">MXC026</div>
+              </div>
+            </div>
+
+            <div class="prodSupport">PRODUCTION SUPPORT</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" onclick="window.print()">Imprimir</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
