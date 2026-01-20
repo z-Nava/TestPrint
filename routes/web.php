@@ -5,6 +5,7 @@ use App\Http\Controllers\PrintDemoController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\JobValidationController;
 use App\Http\Controllers\MasterEnsambleController;
+use App\Http\Controllers\ZebraTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,6 @@ Route::get('/master-ensamble', [MasterEnsambleController::class, 'index'])
 
 Route::post('/master-ensamble/pdf', [MasterEnsambleController::class, 'pdf'])
     ->name('master.ensamble.pdf');
+
+Route::get('/zebra/test', [ZebraTestController::class, 'index'])->name('zebra.test');
+Route::post('/zebra/zpl', [ZebraTestController::class, 'zpl'])->name('zebra.zpl');
