@@ -19,29 +19,27 @@ class ZebraTestController extends Controller
 
     $serial = $request->serial;
 
-    // Configuración de etiqueta (ajusta si no es 4x2)
+    // Configuración de etiqueta (4x2 pulgadas, 203 dpi)
     $dpi = 203;
-    $wIn = 4;
-    $hIn = 2;
-
-    $pw = $wIn * $dpi;   // 812
-    $ll = $hIn * $dpi;   // 406
-
-    // Offset global (mueve todo)
-    $lhX = 400;
-    $lhY = 50;
+    $pw = 4 * $dpi;   // 812
+    $ll = 2 * $dpi;   // 406
 
     $zpl  = "^XA\n";
-        $zpl .= "^PW{$pw}\n";
-        $zpl .= "^LL{$ll}\n";
-        $zpl .= "^LH{$lhX},{$lhY}\n";
-        $zpl .= "^FWN\n";
+    $zpl .= "^PW{$pw}\n";
+    $zpl .= "^LL{$ll}\n";
+    $zpl .= "^LH0,0\n";
+    $zpl .= "^FWN\n";
 
-        // Serial grande y claro
-        $zpl .= "^FO50,20^A0N,20,20^FD{$serial}^FS\n";
+    // Texto del serial
+    $zpl .= "^FO40,120^A0N,40,40^FD{$serial}^FS\n";
 
-        $zpl .= "^XZ";
+    // Código QR con el serial
+    $zpl .= "^FO500,60^BQN,2,3\n";
+    $zpl .= "^FDLA,{$serial}^FS\n";
 
-        return response($zpl)->header('Content-Type', 'text/plain');
-    }
+    $zpl .= "^XZ";
+
+    return response($zpl)->header('Content-Type', 'text/plain');
+}
+
 }
