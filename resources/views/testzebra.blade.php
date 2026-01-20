@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Zebra Browser Print -->
-    <script src="http://localhost:9100/BrowserPrint-2.0.1.min.js"></script>
+    <script src="{{ asset('vendor/zebra/BrowserPrint-3.1.250.min.js') }}"></script>
 </head>
 <body class="bg-slate-100">
 <div class="min-h-screen flex items-center justify-center p-6">
@@ -37,44 +37,68 @@
 </div>
 
 <script>
+BrowserPrint.useHttps = true;
 let zebra = null;
 
-BrowserPrint.getDefaultDevice("printer", function(device) {
-    zebra = device;
-    document.getElementById("status").innerHTML =
-        "Impresora detectada: <b>" + device.name + "</b>";
-}, function() {
-    document.getElementById("status").innerHTML =
-        "<span class='text-red-600'>No se detectó Zebra Browser Print</span>";
-});
-
-function imprimir() {
-    const serial = document.getElementById("serial").value;
-    if (!serial) {
-        alert("Ingresa un serial");
-        return;
-    }
-    if (!zebra) {
-        alert("No hay impresora detectada");
-        return;
-    }
-
-    fetch("{{ route('zebra.zpl') }}", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-TOKEN": "{{ csrf_token() }}"
-        },
-        body: JSON.stringify({ serial })
-    })
-    .then(r => r.text())
-    .then(zpl => {
-        zebra.send(zpl,
-            () => alert("Enviado a imprimir"),
-            e => alert("Error al imprimir: " + e)
-        );
-    });
+function setStatus(html) {
+  document.getElementById("status").innerHTML = html;
 }
+
+// 👇 ESTA FUNCIÓN DEBE ESTAR AQUÍ, GLOBAL
+function imprimir() {
+  const serial = document.getElementById("serial").value.trim();
+
+  if (!serial) {
+    alert("Ingresa un serial");
+    return;
+  }
+  if (!zebra) {
+    alert("No hay impresora detectada");
+    return;
+  }
+
+  fetch("{{ route('zebra.zpl') }}", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRF-TOKEN": "{{ csrf_token() }}"
+    },
+    body: JSON.stringify({ serial })
+  })
+  .then(r => r.text())
+  .then(zpl => {
+    zebra.send(zpl,
+      () => alert("Enviado a imprimir"),
+      e => alert("Error al imprimir: " + e)
+    );
+  })
+  .catch(e => alert("Error fetch: " + e));
+}
+
+// Solo lógica de detección aquí
+window.addEventListener("load", () => {
+  if (typeof BrowserPrint === "undefined") {
+    setStatus("No se cargó BrowserPrint");
+    return;
+  }
+
+  BrowserPrint.getLocalDevices(function(devicesRaw) {
+    const devices = Array.isArray(devicesRaw) ? devicesRaw : [devicesRaw];
+    const printers = devices.filter(d => d && d.deviceType === "printer");
+
+    if (!printers.length) {
+      zebra = null;
+      setStatus("No se detectaron impresoras");
+      return;
+    }
+
+    zebra = printers[0];
+    setStatus("Impresora detectada: " + zebra.name);
+  }, function(err) {
+    zebra = null;
+    setStatus("Error: " + JSON.stringify(err));
+  }, "printer");
+});
 </script>
 </body>
 </html>
