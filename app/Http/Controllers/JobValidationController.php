@@ -14,8 +14,8 @@ class JobValidationController extends Controller
      * OJO: "X:\" es unidad mapeada; puede fallar si PHP corre como servicio.
      * En servidor suele ser mejor una ruta UNC: \\server\share\...\Job_Validation_Zaira.xlsx
      */
-//private string $filePath = '\\\\met.globaltti.net\\milwaukeetool\\Torreon\\Oracle_Report_Center\\Job_Validation_Zaira.xlsx';
-private string $filePath = 'C:/Users/navar/Desktop/INFO CUARTO DE ETIQUETAS/Job_Released_Zaira.xlsx';
+private string $filePath = '\\\\met.globaltti.net\\milwaukeetool\\Torreon\\HOJA MASTER SCANNER\\Jobs_Released_Zaira.xlsx';
+//private string $filePath = 'C:/Users/navar/Desktop/INFO CUARTO DE ETIQUETAS/Job_Released_Zaira.xlsx';
     /**
      * Columnas requeridas (tal como vienen en el archivo)
      */
