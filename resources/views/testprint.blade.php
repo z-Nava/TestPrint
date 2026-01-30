@@ -29,8 +29,13 @@
             </a>
                 
             <a href="{{ route('zebra.test') }}"
-            class="mt-3 block text-center w-full rounded-xl bg-orange-600 text-white py-3 font-semibold hover:bg-orange-500 transition">
-            Prueba Zebra (Browser Print)
+                class="mt-3 block text-center w-full rounded-xl bg-orange-600 text-white py-3 font-semibold hover:bg-orange-500 transition">
+                Prueba Zebra (Browser Print)
+            </a>
+
+            <a href="{{ route('dummyqr.test') }}"
+                class="mt-3 block text-center w-full rounded-xl bg-emerald-600 text-white py-3 font-semibold hover:bg-emerald-500 transition">
+                Dummy QR (FG / JOB / Consecutivo)
             </a>
 
 

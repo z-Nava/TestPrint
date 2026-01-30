@@ -6,6 +6,7 @@ use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\JobValidationController;
 use App\Http\Controllers\MasterEnsambleController;
 use App\Http\Controllers\ZebraTestController;
+use App\Http\Controllers\DummyQRTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,6 @@ Route::post('/master-ensamble/pdf', [MasterEnsambleController::class, 'pdf'])
 
 Route::get('/zebra/test', [ZebraTestController::class, 'index'])->name('zebra.test');
 Route::post('/zebra/zpl', [ZebraTestController::class, 'zpl'])->name('zebra.zpl');
+
+Route::get('/dummyqr/test', [DummyQRTestController::class, 'index'])->name('dummyqr.test');
+Route::post('/dummyqr/zpl', [DummyQRTestController::class, 'zpl'])->name('dummyqr.zpl');
