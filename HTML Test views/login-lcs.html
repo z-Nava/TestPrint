@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Label Room System - Login</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+   <style>
+    @keyframes gradient-x {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .bg-animated {
+      background: linear-gradient(
+        -45deg,
+        rgb(255, 0, 0),
+        rgb(0, 0, 0),
+        rgb(0, 0, 0),
+        rgb(255, 0, 0)
+      );
+      background-size: 400% 400%;
+      animation: gradient-x 10s ease infinite;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-animated text-white">
+  <div class="min-h-screen flex items-center justify-center px-4 py-10">
+    <div class="w-full max-w-5xl">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Label Room System</h1>
+      </div>
+      <!-- Sign in panel -->
+      <div class="mt-8 glass rounded-2xl shadow-2xl overflow-hidden border border-white/10">
+
+
+        <!-- Card -->
+      <div class="glass rounded-2xl shadow-2xl overflow-hidden">
+        <div class="px-6 sm:px-8 py-5 border-b border-white/10 flex items-center justify-between gap-3">
+          <div class="text-sm text-white/70">
+            Acceso: <span class="text-white font-semibold">Admin</span> / <span class="text-white font-semibold">Label Room</span>
+          </div>
+
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-white/80">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            Production Environment
+          </span>
+        </div>
+
+        <form class="px-6 sm:px-8 py-7" method="post" action="#">
+          <!-- Error example (mostrar cuando el backend diga que no existe o está inactivo) -->
+          <div id="errorBox" class="hidden mb-5 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+            Número de empleado no válido o no existe. Verifica e intenta de nuevo.
+          </div>
+
+          <!-- Employee number -->
+          <label class="block text-sm font-medium text-white/80 mb-2">Número de empleado</label>
+          <div class="relative">
+            <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-white/40">
+              <!-- id badge icon -->
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7 3h10a2 2 0 0 1 2 2v3h-2V5H7v14h10v-3h2v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm3 6h10v2H10V9Zm0 4h10v2H10v-2Z"/>
+              </svg>
+            </span>
+
+            <input
+              type="text"
+              name="employee_number"
+              inputmode="numeric"
+              pattern="[0-9]{4,10}"
+              required
+              autofocus
+              class="w-full rounded-xl bg-white/5 border border-white/10 px-10 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-white/20"
+              placeholder="Ej. 123456"
+            />
+          </div>
+
+          <p class="mt-2 text-xs text-white/50">
+            *Solo números. Si no tienes acceso, contacta al cuarto de etiquetas o IT.
+          </p>
+
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <button
+              type="submit"
+              class="w-full rounded-xl bg-red-600 hover:bg-red-500 transition py-3 font-semibold shadow-lg shadow-red-900/30 focus:outline-none focus:ring-4 focus:ring-red-500/30"
+            >
+              Entrar
+            </button>
+
+            <!-- Botón demo para ver el mensaje de error visualmente -->
+            <button
+              type="button"
+              id="demoErrorBtn"
+              class="w-full sm:w-auto rounded-xl bg-white/10 hover:bg-white/15 transition py-3 px-5 font-semibold text-white/80"
+              title="Solo para demo visual"
+            >
+              Toggle Error
+            </button>
+          </div>
+        </form>
+        <div class="px-6 sm:px-10 py-4 border-t border-white/10 text-center text-xs text-white/50">
+          v1.0.0 | Use authorized by internal personnel only.
+        </div>
+      </div>
+    </div>
+  </div>
+   <script>
+    // Demo error box toggle (solo para visualizar)
+    const errorBox = document.getElementById('errorBox');
+    document.getElementById('demoErrorBtn').addEventListener('click', () => {
+      errorBox.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

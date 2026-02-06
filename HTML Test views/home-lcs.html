@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Label Room System - Home</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    // Colores corporativos (Milwaukee-like)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#E31836', // rojo empresa
+              dark: '#B3122A',
+              soft: '#FDE7EB'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Fondo limpio (oscuro suave) */
+    .bg-app {
+      background:
+        radial-gradient(900px 450px at 15% 10%, rgba(227,24,54,.12), transparent 55%),
+        radial-gradient(900px 500px at 85% 30%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, #0B1220 0%, #0A101C 100%);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-app text-white">
+  <!-- Topbar -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-black/30 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="h-16 flex items-center justify-between gap-4">
+        <!-- Left -->
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-brand/15 border border-brand/30 flex items-center justify-center">
+            <span class="text-brand font-extrabold text-lg">MW</span>
+          </div>
+          <div class="leading-tight">
+            <div class="font-semibold">Label Room System</div>
+            <div class="text-xs text-white/55">Home / Dashboard</div>
+          </div>
+        </div>
+
+        <!-- Center (optional quick search) -->
+        <div class="hidden md:flex flex-1 max-w-xl">
+          <div class="w-full relative">
+            <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-white/40">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M10 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm0-14a6 6 0 1 0 6 6 6 6 0 0 0-6-6Zm11.71 17.29-4.2-4.2 1.42-1.42 4.2 4.2Z"/></svg>
+            </span>
+            <input
+              type="text"
+              class="w-full rounded-xl bg-white/5 border border-white/10 pl-10 pr-3 py-2 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-4 focus:ring-brand/25 focus:border-white/20"
+              placeholder="Buscar por folio, PO, job..."
+            />
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="flex items-center gap-3">
+          <span class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-white/80">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            Online
+          </span>
+
+          <div class="text-right hidden sm:block leading-tight">
+            <div class="text-sm font-semibold">José Ángel</div>
+            <div class="text-xs text-white/55">Label Room</div>
+          </div>
+
+          <button class="h-10 w-10 rounded-full bg-white/10 border border-white/10 hover:bg-white/15 transition flex items-center justify-center">
+            <svg class="h-5 w-5 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.24-9 5v1h18v-1c0-2.76-4-5-9-5Z"/></svg>
+          </button>
+
+          <button class="hidden sm:inline-flex items-center gap-2 rounded-xl bg-brand hover:bg-brand-dark transition px-4 py-2 text-sm font-semibold shadow-lg shadow-black/30">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5v14m-7-7h14"/></svg>
+            Nueva requisición
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+    <!-- Title row -->
+    <div class="flex items-end justify-between gap-4 flex-wrap">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Dashboard</h1>
+        <p class="mt-1 text-white/60">Mesa de trabajo del cuarto de etiquetas: crea, imprime y entrega requisiciones.</p>
+      </div>
+
+      <div class="flex gap-2">
+        <button class="inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/15 transition px-4 py-2 text-sm font-semibold">
+          <svg class="h-5 w-5 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14l4-3h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg>
+          Historial
+        </button>
+        <button class="inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/15 transition px-4 py-2 text-sm font-semibold">
+          <svg class="h-5 w-5 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8V4l8 8-8 8v-4H4V8h8Z"/></svg>
+          Salir
+        </button>
+      </div>
+    </div>
+
+    <!-- KPI cards -->
+    <section class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-white/60">Pendientes</div>
+          <span class="inline-flex items-center rounded-full bg-brand/15 text-brand px-2 py-1 text-xs font-semibold border border-brand/25">Today</span>
+        </div>
+        <div class="mt-3 text-4xl font-extrabold">8</div>
+        <div class="mt-2 text-xs text-white/55">Requisiciones listas para imprimir</div>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-white/60">En impresión</div>
+          <span class="inline-flex items-center rounded-full bg-white/10 text-white/75 px-2 py-1 text-xs font-semibold border border-white/10">Live</span>
+        </div>
+        <div class="mt-3 text-4xl font-extrabold">3</div>
+        <div class="mt-2 text-xs text-white/55">Impresiones en proceso</div>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-white/60">Entregadas hoy</div>
+          <span class="inline-flex items-center rounded-full bg-emerald-500/15 text-emerald-200 px-2 py-1 text-xs font-semibold border border-emerald-400/20">OK</span>
+        </div>
+        <div class="mt-3 text-4xl font-extrabold">2</div>
+        <div class="mt-2 text-xs text-white/55">Requisiciones cerradas</div>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-white/60">Re-impresiones</div>
+          <span class="inline-flex items-center rounded-full bg-brand/15 text-brand px-2 py-1 text-xs font-semibold border border-brand/25">Review</span>
+        </div>
+        <div class="mt-3 text-4xl font-extrabold">1</div>
+        <div class="mt-2 text-xs text-white/55">Solicitudes de reprint</div>
+      </div>
+    </section>
+
+    <!-- Filters + actions -->
+    <section class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+      <div class="flex flex-col lg:flex-row gap-3 lg:items-center lg:justify-between">
+        <div class="flex-1 grid grid-cols-1 md:grid-cols-4 gap-3">
+          <input class="rounded-xl bg-black/30 border border-white/10 px-3 py-2 text-sm placeholder:text-white/30 focus:outline-none focus:ring-4 focus:ring-brand/20"
+                 placeholder="Folio / PO / Job" />
+          <select class="rounded-xl bg-black/30 border border-white/10 px-3 py-2 text-sm focus:outline-none focus:ring-4 focus:ring-brand/20">
+            <option>Todas las líneas</option>
+            <option>Línea 1</option>
+            <option>Línea 2</option>
+          </select>
+          <select class="rounded-xl bg-black/30 border border-white/10 px-3 py-2 text-sm focus:outline-none focus:ring-4 focus:ring-brand/20">
+            <option>Todos los tipos</option>
+            <option>Shipping</option>
+            <option>Rating</option>
+            <option>Serial</option>
+            <option>Master</option>
+          </select>
+          <select class="rounded-xl bg-black/30 border border-white/10 px-3 py-2 text-sm focus:outline-none focus:ring-4 focus:ring-brand/20">
+            <option>Todos los estados</option>
+            <option>Draft</option>
+            <option>Submitted</option>
+            <option>Printing</option>
+            <option>Delivered</option>
+          </select>
+        </div>
+
+        <div class="flex gap-2">
+          <button class="inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/15 transition px-4 py-2 text-sm font-semibold">
+            <svg class="h-5 w-5 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M10 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm0-14a6 6 0 1 0 6 6 6 6 0 0 0-6-6Zm11.71 17.29-4.2-4.2 1.42-1.42 4.2 4.2Z"/></svg>
+            Filtrar
+          </button>
+          <button class="inline-flex items-center gap-2 rounded-xl bg-brand hover:bg-brand-dark transition px-4 py-2 text-sm font-semibold shadow-lg shadow-black/30">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5v14m-7-7h14"/></svg>
+            Nueva requisición
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work queue table -->
+    <section class="mt-6 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+      <div class="px-5 py-4 border-b border-white/10 flex items-center justify-between">
+        <div>
+          <div class="font-semibold">Cola de trabajo</div>
+          <div class="text-xs text-white/55">Requisiciones creadas por el cuarto de etiquetas</div>
+        </div>
+        <div class="text-xs text-white/55">Mostrando 1–6</div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead class="bg-black/25 text-white/70">
+            <tr>
+              <th class="text-left px-5 py-3 font-semibold">Folio</th>
+              <th class="text-left px-5 py-3 font-semibold">Línea</th>
+              <th class="text-left px-5 py-3 font-semibold">Turno</th>
+              <th class="text-left px-5 py-3 font-semibold">Tipo</th>
+              <th class="text-left px-5 py-3 font-semibold">Cantidad</th>
+              <th class="text-left px-5 py-3 font-semibold">Estado</th>
+              <th class="text-right px-5 py-3 font-semibold">Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody class="divide-y divide-white/10">
+            <tr class="hover:bg-white/5 transition">
+              <td class="px-5 py-3 font-semibold">1025</td>
+              <td class="px-5 py-3">Línea 1</td>
+              <td class="px-5 py-3">Turno A</td>
+              <td class="px-5 py-3">Shipping</td>
+              <td class="px-5 py-3">500</td>
+              <td class="px-5 py-3">
+                <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs border border-white/10">
+                  <span class="h-2 w-2 rounded-full bg-brand"></span> Submitted
+                </span>
+              </td>
+              <td class="px-5 py-3">
+                <div class="flex justify-end gap-2">
+                  <button class="rounded-xl bg-white/10 hover:bg-white/15 transition px-3 py-2 text-xs font-semibold">Ver</button>
+                  <button class="rounded-xl bg-brand hover:bg-brand-dark transition px-3 py-2 text-xs font-semibold shadow shadow-black/30">Imprimir</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-white/5 transition">
+              <td class="px-5 py-3 font-semibold">1024</td>
+              <td class="px-5 py-3">Línea 1</td>
+              <td class="px-5 py-3">Turno A</td>
+              <td class="px-5 py-3">Rating</td>
+              <td class="px-5 py-3">320</td>
+              <td class="px-5 py-3">
+                <span class="inline-flex items-center gap-2 rounded-full bg-brand/15 text-brand px-3 py-1 text-xs border border-brand/25">
+                  <span class="h-2 w-2 rounded-full bg-brand"></span> Printing
+                </span>
+              </td>
+              <td class="px-5 py-3">
+                <div class="flex justify-end gap-2">
+                  <button class="rounded-xl bg-white/10 hover:bg-white/15 transition px-3 py-2 text-xs font-semibold">Ver</button>
+                  <button class="rounded-xl bg-white/10 hover:bg-white/15 transition px-3 py-2 text-xs font-semibold">Marcar entregado</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-white/5 transition">
+              <td class="px-5 py-3 font-semibold">1023</td>
+              <td class="px-5 py-3">Línea 2</td>
+              <td class="px-5 py-3">Turno B</td>
+              <td class="px-5 py-3">Serial</td>
+              <td class="px-5 py-3">500</td>
+              <td class="px-5 py-3">
+                <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs border border-white/10">
+                  <span class="h-2 w-2 rounded-full bg-yellow-400"></span> Draft
+                </span>
+              </td>
+              <td class="px-5 py-3">
+                <div class="flex justify-end gap-2">
+                  <button class="rounded-xl bg-white/10 hover:bg-white/15 transition px-3 py-2 text-xs font-semibold">Editar</button>
+                  <button class="rounded-xl bg-brand hover:bg-brand-dark transition px-3 py-2 text-xs font-semibold">Enviar</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-white/5 transition">
+              <td class="px-5 py-3 font-semibold">1022</td>
+              <td class="px-5 py-3">Línea 1</td>
+              <td class="px-5 py-3">Turno A</td>
+              <td class="px-5 py-3">Master</td>
+              <td class="px-5 py-3">—</td>
+              <td class="px-5 py-3">
+                <span class="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 text-emerald-200 px-3 py-1 text-xs border border-emerald-400/20">
+                  <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Delivered
+                </span>
+              </td>
+              <td class="px-5 py-3">
+                <div class="flex justify-end gap-2">
+                  <button class="rounded-xl bg-white/10 hover:bg-white/15 transition px-3 py-2 text-xs font-semibold">Ver</button>
+                  <button class="rounded-xl bg-white/10 hover:bg-white/15 transition px-3 py-2 text-xs font-semibold">Reprint</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="px-5 py-4 border-t border-white/10 flex items-center justify-between text-xs text-white/55">
+        <div>Mostrando 1 a 4 resultados</div>
+        <div class="flex items-center gap-2">
+          <button class="rounded-lg bg-white/10 hover:bg-white/15 transition px-3 py-1">Prev</button>
+          <button class="rounded-lg bg-white/10 hover:bg-white/15 transition px-3 py-1">1</button>
+          <button class="rounded-lg bg-white/10 hover:bg-white/15 transition px-3 py-1">2</button>
+          <button class="rounded-lg bg-white/10 hover:bg-white/15 transition px-3 py-1">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-center text-xs text-white/45">
+      v1.0.0 | © 2026 Milwaukee Electric Tool Corporation. Internal use only.
+    </footer>
+  </main>
+
+  <!-- Mobile floating button -->
+  <button class="sm:hidden fixed bottom-5 right-5 rounded-full bg-brand hover:bg-brand-dark transition shadow-xl shadow-black/40 h-14 w-14 flex items-center justify-center">
+    <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5v14m-7-7h14"/></svg>
+  </button>
+</body>
+</html>
